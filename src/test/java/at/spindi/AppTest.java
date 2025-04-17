@@ -123,12 +123,12 @@ public class AppTest
         assertEquals(1, r.modified.size());
         assertEquals(1, r.same.size());
 
-        assertEquals(new D365(0, "berni"), r.modified.get(0).a);
-        assertEquals(new Nmp("0", "neuer Name"), r.modified.get(0).b);
-
         assertEquals( new D365(1,"1"), r.only_a.get(0));
-
         assertEquals(new Nmp("2", "Neue Org"), r.only_b.get(0));
+
+        var modified = r.modified.get(0);
+        assertEquals(new D365(0, "berni"), modified.a);
+        assertEquals(new Nmp("0", "neuer Name"), modified.b);
 
         var same = r.same.get(0);
         assertEquals(new D365(3, "3"), same.a);

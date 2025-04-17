@@ -36,23 +36,16 @@ public class Delta {
                 break;
             }
             else if ( a != null && b == null ) {
-
                 only_in_a.accept(a);
-
                 a_last = a;
                 a = getNext(a_iter);
-                check_sort_order(a_last, a, key_cmp_a_a, "A");
             }
             else if ( a == null && b != null ) {
-
                 only_in_b.accept(b);
-
                 b_last = b;
                 b = getNext(b_iter);
-                check_sort_order(b_last, b, key_cmp_b_b, "B");
             }
             else {
-
                 switch (key_cmp_a_b.apply(a,b)) {
                     case LESS :
                         only_in_a.accept(a);
@@ -76,13 +69,12 @@ public class Delta {
                         a = getNext(a_iter);
                         b = getNext(b_iter);
                 }
-
-                if ( a != null ) {
-                    check_sort_order(a_last, a, key_cmp_a_a, "A");
-                }
-                if ( b != null ) {
-                    check_sort_order(b_last, b, key_cmp_b_b, "B");
-                }
+            }
+            if ( a != null ) {
+                check_sort_order(a_last, a, key_cmp_a_a, "A");
+            }
+            if ( b != null ) {
+                check_sort_order(b_last, b, key_cmp_b_b, "B");
             }
         }
     }
