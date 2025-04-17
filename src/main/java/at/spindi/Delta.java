@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 
 public class Delta {
     public static <A,B> void run(
-        Stream<A>                   a_seq,
-        Stream<B>                   b_seq,
+        Stream<A>                   a_stream,
+        Stream<B>                   b_stream,
         BiFunction<A,B,Ordering>    key_cmp_a_b,
         BiPredicate<A,B>            attribute_cmp,
         BiFunction<A,A,Ordering>    key_cmp_a_a,
@@ -21,8 +21,8 @@ public class Delta {
         BiConsumer<A,B>             samesame
         ) throws Exception {
 
-        var a_iter = a_seq.iterator();
-        var b_iter = b_seq.iterator();
+        var a_iter = a_stream.iterator();
+        var b_iter = b_stream.iterator();
 
         A a_last = null;
         B b_last = null;
