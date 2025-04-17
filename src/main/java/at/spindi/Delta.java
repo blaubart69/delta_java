@@ -102,8 +102,8 @@ public class Delta {
             throw new Exception(
                 String.format("list %s is not sorted ascending. LAST is greater or equal CURR. last [%s], curr [%s]"
                 ,context
-                ,last.toString()
-                ,curr.toString()));
+                ,last
+                ,curr));
         }
     }
 }
