@@ -109,6 +109,7 @@ public class AppTest
              new D365(0, "berni")
             ,new D365(1, "1")
             ,new D365(3, "3")
+            ,new D365(5, "5")
         );
         var stream_b = Stream.of(
              new Nmp("0", "neuer Name")
@@ -118,12 +119,13 @@ public class AppTest
 
         var r = run_delta(stream_a, stream_b);
             
-        assertEquals(1, r.only_a.size());
+        assertEquals(2, r.only_a.size());
         assertEquals(1, r.only_b.size());
         assertEquals(1, r.modified.size());
         assertEquals(1, r.same.size());
 
-        assertEquals( new D365(1,"1"), r.only_a.get(0));
+        assertEquals(new D365(1,"1"), r.only_a.get(0));
+
         assertEquals(new Nmp("2", "Neue Org"), r.only_b.get(0));
 
         var modified = r.modified.get(0);
@@ -133,5 +135,7 @@ public class AppTest
         var same = r.same.get(0);
         assertEquals(new D365(3, "3"), same.a);
         assertEquals(new Nmp("3", "3"), same.b);
+
+        assertEquals(new D365(5,"5"), r.only_a.get(1));
     }
 }
